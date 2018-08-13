@@ -1,0 +1,3 @@
+- name: ansible-hello-world
+  src: https://github.com/nabadger/ansible-hello-world.git
+  version: origin/master
