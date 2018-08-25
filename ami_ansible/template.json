@@ -1,0 +1,38 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-east-1",
+      "source_ami": "ami-b70554c8",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ami_name": "My-Nginx-AMI-{{isotime | clean_ami_name}}",
+      "ami_description": "EC2 AMI with Ansible",
+      "tags": {
+        "role": "web_Server"
+      },
+      "run_tags": {
+        "role": "Production_Web"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "provision.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "playbook.yaml",
+      "role_paths": [
+          "/home/ec2-user/.ansible/roles/ansible-hello-world"
+      ]
+    }
+  ]
+}
