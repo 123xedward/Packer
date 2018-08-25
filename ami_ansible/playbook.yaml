@@ -5,5 +5,5 @@
   become_method: sudo
   connection: local
   roles:
-    - role: ansible-hello-world
+    - role: mysql-java
   tasks:
