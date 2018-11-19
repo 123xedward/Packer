@@ -1,0 +1,1 @@
+Enable Redhat EC2 with ansible
