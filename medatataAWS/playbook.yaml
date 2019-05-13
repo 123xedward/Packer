@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: yes
+  become_user: root
+  become_method: sudo
+  connection: local
+  roles:
+    - role: mysql-java
+  tasks:
