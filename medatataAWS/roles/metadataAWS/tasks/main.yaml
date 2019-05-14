@@ -1,0 +1,28 @@
+- name: Installing dependencies
+  yum:
+    name: squid
+    state: present
+
+#Copying index.php
+- name: Copy config file
+  copy:
+    src: ../files/index.php
+    dest: /var/www/html/index.php
+    owner: root
+    group: root
+    mode: 0644
+
+#Copying master.css
+- name: Copy config file
+  copy:
+    src: ../files/master.css
+    dest: /var/www/html/css/master.css
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Ensure apache is started and enabled
+  service:
+    name: squid
+    state: started
+    enabled: true

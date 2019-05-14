@@ -5,5 +5,5 @@
   become_method: sudo
   connection: local
   roles:
-    - role: mysql-java
+    - role: metadataAWS
   tasks:
